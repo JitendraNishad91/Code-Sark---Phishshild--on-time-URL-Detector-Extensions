@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PhishShield</title>
+    <style>
+      :root {
+        font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        --safe: #16a34a;
+        --caution: #facc15;
+        --risky: #f97316;
+        --danger: #dc2626;
+        --bg1: #0f172a;
+        --bg2: #1e293b;
+        --glass: rgba(255,255,255,0.08);
+      }
+
+      body {
+        margin: 0;
+        padding: 16px;
+        width: 320px;
+        min-height: 360px;
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        width: 100%;
+        background: var(--glass);
+        border-radius: 18px;
+        padding: 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 6px 22px rgba(0,0,0,0.4);
+        animation: fadeIn 0.6s ease;
+        position: relative;
+        text-align: center;
+      }
+
+      .icon {
+        font-size: 36px;
+        margin-bottom: 6px;
+        color: #60a5fa;
+      }
+
+      .header h1 {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0;
+        background: linear-gradient(90deg, #60a5fa, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .score-ring {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 18px auto;
+      }
+
+      .score {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        background: #475569;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+      }
+
+      .ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 4px solid transparent;
+        background: conic-gradient(var(--clr, #2563eb) calc(var(--pct, 0) * 1%), rgba(255,255,255,0.1) 0%);
+        -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 6px), #000 0);
+        mask: radial-gradient(farthest-side, #0000 calc(100% - 6px), #000 0);
+        transition: background 0.4s ease;
+      }
+
+      .url {
+        font-size: 12px;
+        color: #d1d5db;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-bottom: 4px;
+      }
+
+      .label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #f9fafb;
+        margin-bottom: 6px;
+      }
+
+      .btn {
+        margin-top: 10px;
+        width: 100%;
+        padding: 10px 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        transform: translateY(-2px);
+      }
+
+      .legend {
+        margin-top: 10px;
+        font-size: 11.5px;
+        line-height: 1.6;
+      }
+
+      .legend span {
+        font-weight: 600;
+      }
+
+      .muted {
+        font-size: 11px;
+        margin-top: 8px;
+        color: #a5b4fc;
+        font-style: italic;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <div class="header">
+        <h1>PhishShield Scanner</h1>
+      </div>
+
+      <div class="score-ring">
+        <div id="score" class="score">--</div>
+        <div id="ring" class="ring"></div>
+      </div>
+
+      <div class="url" id="url"></div>
+      <div class="label" id="label"></div>
+
+      <button id="scan" class="btn">🔍 Scan this site</button>
+
+      <div class="legend">
+        <span style="color: var(--safe)">🟢 0–24 Safe</span> · 
+        <span style="color: var(--caution)">🟡 25–49 Caution</span> · 
+        <span style="color: var(--risky)">🟠 50–74 Risky</span> · 
+        <span style="color: var(--danger)">🔴 75–100 Phishing</span>
+      </div>
+
+      <div class="muted" id="hint"></div>
+    </div>
+
+    <script>
+      // keep your popup.js compatibility
+      function updateRing(pct, color) {
+        const ring = document.getElementById('ring');
+        ring.style.setProperty('--pct', pct);
+        ring.style.setProperty('--clr', color);
+      }
+
+      const originalSetUI = window.setUI;
+      window.setUI = function(url, pct, label) {
+        originalSetUI(url, pct, label);
+        const color = colorFor(pct || 0);
+        updateRing((pct || 0) / 100, color);
+      };
+    </script>
+    <script src="popup.js"></script>
+  </body>
+</html>
