@@ -4,7 +4,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/JitendraNishad91/Code-Smesher---Phishshield-url-detection-">
+  <a href="https://github.com/JitendraNishad91/Code-Sark---Phishshild--on-time-URL-Detector-Extensions">
     <img src="phishshield128.png" alt="Logo" width="120" height="120">
   </a>
 
@@ -13,14 +13,14 @@
   <p align="center">
     A Chrome extension that alerts users when they navigate to potentially malicious or phishing websites. Built for RobHacks conducted by Nosu.
     <br />
-    <a href="https://github.com/JitendraNishad91/Code-Smesher---Phishshield-url-detection-"><strong>Explore the docs »</strong></a>
+    <a href="hhttps://github.com/JitendraNishad91/Code-Sark---Phishshild--on-time-URL-Detector-Extensions"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href = "https://github.com/JitendraNishad91/Code-Smesher---Phishshield-url-detection-">View Demo</a>
+    <a href = "https://github.com/JitendraNishad91/Code-Sark---Phishshild--on-time-URL-Detector-Extensions">View Demo</a>
     ·
-    <a href="https://github.com/JitendraNishad91/Code-Smesher---Phishshield-url-detection-/issues">Report Bug</a>
+    <a href="https://github.com/JitendraNishad91/Code-Sark---Phishshild--on-time-URL-Detector-Extensions/issues">Report Bug</a>
     ·
-    <a href="https://github.com/JitendraNishad91/Code-Smesher---Phishshield-url-detection-/issues">Request Feature</a>
+    <a href="https://github.com/JitendraNishad91/Code-Sark---Phishshild--on-time-URL-Detector-Extensions/issues">Request Feature</a>
   </p>
 </div>
 
@@ -172,7 +172,7 @@ Block the website
 <!-- ISSUES -->
 ## Issues
 
-See the [open issues](https://github.com/JitendraNishad91/Code-Smesher---Phishshield-url-detection-/issues) for a full list of known issues, priorities and assignees.
+See the [open issues](https://github.com/JitendraNishad91/Code-Sark---Phishshild--on-time-URL-Detector-Extensions) for a full list of known issues, priorities and assignees.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
